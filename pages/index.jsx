@@ -36,13 +36,17 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        <span className={styles.timer}>{time}</span>
+        <span className={styles.timer}>
+          {`${String(Math.floor(time / 60)).padStart(2, 0)}:${String(
+            time % 60,
+          ).padStart(2, 0)}`}
+        </span>
         <button onClick={startTimer}>Start</button>
         <select
           onChange={(e) => setInterval(parseInt(e.target.value, 10))}
         >
           {selectableIntervals.map((int) => (
-            <option>{int}</option>
+            <option key={int}>{int}</option>
           ))}
         </select>
       </main>
